@@ -32,7 +32,7 @@ public class HitCheckDaoImpl implements HitCheckDao {
     }
 
     /**
-     * Deletes all HitCheckData records from database.
+     * Deletes all HitCheck records from database.
      */
     @Override
     public void deleteAllHitChecks() {

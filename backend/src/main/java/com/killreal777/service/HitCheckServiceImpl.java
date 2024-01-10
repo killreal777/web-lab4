@@ -33,7 +33,7 @@ public class HitCheckServiceImpl implements HitCheckService {
     }
 
     /**
-     * Deletes all HitCheckData records from database.
+     * Deletes all HitCheck records from database.
      */
     @Override
     @Transactional

@@ -16,7 +16,7 @@ public interface HitCheckDao {
     public void addHitCheck(HitCheck hitCheck);
 
     /**
-     * Deletes all HitCheckData records from database.
+     * Deletes all HitCheck records from database.
      */
     public void deleteAllHitChecks();
 }
