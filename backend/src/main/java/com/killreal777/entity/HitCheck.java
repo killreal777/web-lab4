@@ -3,7 +3,7 @@ package com.killreal777.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -14,17 +14,17 @@ import java.time.LocalTime;
 public class HitCheck {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Embedded
     private AreaDot areaDot;
 
-    private LocalTime startTime;
+    private LocalDateTime startTime;
     private long executionTimeNano;
     private boolean isHit;
 
-    public HitCheck(AreaDot areaDot, LocalTime startTime, long executionTimeNano, boolean isHit) {
+    public HitCheck(AreaDot areaDot, LocalDateTime startTime, long executionTimeNano, boolean isHit) {
         this.areaDot = areaDot;
         this.startTime = startTime;
         this.executionTimeNano = executionTimeNano;

@@ -4,7 +4,7 @@ import com.killreal777.entity.AreaDot;
 import com.killreal777.entity.HitCheck;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 @Component
 public class HitCheckScript {
@@ -20,7 +20,7 @@ public class HitCheckScript {
         areaDotValidator.validate(areaDot);
 
         long startTimeNano = System.nanoTime();
-        LocalTime startTime = LocalTime.now();
+        LocalDateTime startTime = LocalDateTime.now();
 
         boolean isHit = hitChecker.isHit(areaDot);
 
