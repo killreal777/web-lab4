@@ -17,13 +17,8 @@ public class AuthRestController {
 
     @PostMapping("/register")
     public void register(@RequestBody User user) {
-        System.out.println("START");
-        if (userService.isUsernameExists(user.getUsername())) {
-            System.out.println("USERNAME ALREADY EXISTS");
-            return;
-        } else {
+        if (!userService.isUsernameExists(user.getUsername())) {
             userService.addUser(user);
-            System.out.println("USER ADDED");
         }
     }
 }
