@@ -29,7 +29,7 @@ public class HitCheckRestController {
         return hitCheckService.getAllHitChecks();
     }
 
-    @PostMapping("/checkHit")
+    @PostMapping("/hitChecks")
     public void check(@RequestBody AreaDot areaDot) {
         try {
             HitCheck hitCheck = hitCheckScript.execute(areaDot);
