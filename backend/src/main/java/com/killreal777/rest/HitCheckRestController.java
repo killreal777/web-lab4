@@ -17,13 +17,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class HitCheckRestController {
+    private final HitCheckService hitCheckService;
+    private final HitCheckScript hitCheckScript;
 
     @Autowired
-    private HitCheckService hitCheckService;
-
-    @Autowired
-    private HitCheckScript hitCheckScript;
-
+    public HitCheckRestController(HitCheckService hitCheckService, HitCheckScript hitCheckScript) {
+        this.hitCheckService = hitCheckService;
+        this.hitCheckScript = hitCheckScript;
+    }
 
     @GetMapping("/hitChecks")
     public List<HitCheck> show() {

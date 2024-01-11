@@ -4,6 +4,7 @@ import com.killreal777.repositories.UserRepository;
 import com.killreal777.entity.User;
 import com.killreal777.security.UserSecurity;
 import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,9 +15,12 @@ import java.util.Optional;
 
 @Service
 public class UserSecurityService implements UserDetailsService {
+    private final UserRepository userRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    public UserSecurityService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     @Transactional

@@ -8,10 +8,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
+@Getter
 @AllArgsConstructor
 public class UserSecurity implements UserDetails {
-
-    @Getter
     private User user;
 
     @Override
