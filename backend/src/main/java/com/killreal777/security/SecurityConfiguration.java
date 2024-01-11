@@ -37,11 +37,11 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/api/**").permitAll()
-                        .anyRequest().authenticated()
+                .cors().disable()
+                .authorizeHttpRequests((authorize) -> authorize
+                        .anyRequest().permitAll()
                 )
-                .httpBasic(withDefaults());
+                .httpBasic();
 
         return http.build();
     }

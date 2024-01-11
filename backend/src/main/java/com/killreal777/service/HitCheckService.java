@@ -2,7 +2,7 @@ package com.killreal777.service;
 
 import com.killreal777.entity.HitCheck;
 import com.killreal777.repositories.HitCheckRepository;
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
