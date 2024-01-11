@@ -6,8 +6,6 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class UserService {
 
@@ -16,8 +14,7 @@ public class UserService {
 
     @Transactional
     public boolean isUsernameExists(String username) {
-        Optional<User> user = userRepository.findByUsername(username);
-        return user.isPresent();
+        return userRepository.existsByUsername(username);
     }
 
     @Transactional
