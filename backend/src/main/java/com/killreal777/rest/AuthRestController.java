@@ -27,9 +27,9 @@ public class AuthRestController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody User user) {
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getUsername());
-        Authentication authentication = authenticationManager.authenticate(token);
+    public ResponseEntity<String> authenticateUser(@RequestBody User user) {
+        Authentication authentication = authenticationManager
+                .authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         return new ResponseEntity<>("Login success", HttpStatus.OK);
     }
