@@ -13,7 +13,7 @@ export default function Form() {
     const radius = useSelector((state) => state.radius.value);
 
     let inputAreaDot = {
-        r: 1,
+        r: radius,
         x: null,
         y: null,
         isValid: false
@@ -22,7 +22,6 @@ export default function Form() {
 
     function updateR (event) {
         dispatch(setRadius(event.target.value));
-        inputAreaDot.r = event.target.value;
     }
     
     function updateX (event) {

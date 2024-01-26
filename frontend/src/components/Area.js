@@ -5,45 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 
-
-const area = {
-        printDot : function (x, y, r, isHit) {
-        const centerCoordinate = 150;
-        const dotOffsetX = getDotOffset(x, r);
-        const dotOffsetY = getDotOffset(y, r);
-        const dotCoordinateX = centerCoordinate + dotOffsetX;
-        const dotCoordinateY = centerCoordinate - dotOffsetY;
-
-        createDotHtml(dotCoordinateX, dotCoordinateY, isHit);
-    },
-
-    // printAllDots : function () {
-    //     const dotResults = table.getAllDotResults();
-    //     const currentRadius = document.getElementById("check-form:r").value;
-
-    //     for (const dot of dotResults) {
-    //         area.printDot(dot.x.toString(), dot.y.toString(), currentRadius, dot.isHit);
-    //     }
-    // }
-}
-
-
-function getDotOffset(coordinateValue, radiusValue) {
-    const radiusOffset = 100;
-    let dotOffset = coordinateValue / radiusValue * radiusOffset;
-    return correctDotOffset(dotOffset);
-}
-
-function correctDotOffset(dotOffset) {
-    const maxOffset = 149.5;
-    const minOffset = -149.5;
-
-    if (dotOffset > maxOffset) return maxOffset;
-    if (dotOffset < minOffset) return minOffset;
-    return dotOffset;
-}
-
-
 function createDotHtml(cx, cy, isHit) {
     const svg = document.getElementById("area-svg");
     const svgNS = "http://www.w3.org/2000/svg";
@@ -69,17 +30,41 @@ function setCreatedDotAttributes(dot, cx, cy, isHit) {
 
 
 
-
-
-
-
-
-
-
-
-
 export default function Area() {
-    let hitChecks = useSelector(state => state.hitChecks.data);
+    const hitChecks = useSelector(state => state.hitChecks.data);
+    const radius = useSelector((state) => state.radius.value);
+
+
+    function getDotOffset(coordinateValue) {
+        const radiusOffset = 100;
+        let dotOffset = coordinateValue / radius * radiusOffset;
+        return correctDotOffset(dotOffset);
+    }
+    
+    function correctDotOffset(dotOffset) {
+        const maxOffset = 149.5;
+        const minOffset = -149.5;
+    
+        if (dotOffset > maxOffset) return maxOffset;
+        if (dotOffset < minOffset) return minOffset;
+        return dotOffset;
+    }
+
+    function getCx(x) {
+        const centerCoordinate = 150;
+        const dotOffsetX = getDotOffset(x);
+        const dotCoordinateX = centerCoordinate + dotOffsetX;
+        return dotCoordinateX;
+    }
+
+    function getCy(y) {
+        const centerCoordinate = 150;
+        const dotOffsetY = getDotOffset(y);
+        const dotCoordinateY = centerCoordinate - dotOffsetY;
+        return dotCoordinateY;
+    }
+
+
     return (
         <svg id="area-svg" width="300" height="300" xmlns="http://www.w3.org/2000/svg">
 
@@ -120,14 +105,10 @@ export default function Area() {
 
             {
                 hitChecks.map((element, index) =>
-                    <tr key={index}>
-                        <td>{element.startTime.substr(11, 8)}</td>
-                        <td>{element.executionTimeNano}</td>
-                        <td>{element.areaDot.x}</td>
-                        <td>{element.areaDot.y}</td>
-                        <td>{element.areaDot.r}</td>
-                        <td>{element.hit ? "Hit" : "Miss"}</td>
-                    </tr>
+                    <circle className={element.isHit ?  "hit dot" : "fail dot"}
+                            cx={getCx(element.areaDot.x)} 
+                            cy={getCy(element.areaDot.y)} 
+                            r="2.5" />
                 )
             }
 
