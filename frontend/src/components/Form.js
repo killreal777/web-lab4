@@ -20,7 +20,8 @@ export default function Form() {
     }
     
     function updateX (event) {
-        dispatch(setX(event.target.value));
+        const x = event.target.value;
+        dispatch(setX(x));
     }
     
     function updateY (event) {

@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { store } from './store/store';
 
 import App from './components/App';
+import LoginPage from './components/LoginPage';
 
 import './index.css';
 
@@ -14,7 +15,7 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
         <Provider store={store}>
-            <App />
+            <LoginPage />
         </Provider>
     </React.StrictMode>
 );
