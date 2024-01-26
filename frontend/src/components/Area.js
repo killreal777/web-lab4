@@ -1,9 +1,13 @@
 import './styles/Area.css'
 
 import { useDispatch, useSelector } from "react-redux";
+import math from '../math';
 
+import { setR, setX, setY } from "../store/areaDotSlice";
+import hitCheckService from "../services/hitCheckService";
 
 export default function Area() {
+    const dispatch = useDispatch();
     const hitChecks = useSelector(state => state.hitChecks.data);
     const areaDot = useSelector((state) => state.areaDot.value);
 
@@ -38,8 +42,35 @@ export default function Area() {
     }
 
 
+    
+
+    function areaOnClick(clickEvent) {
+        const centerRect = document.getElementById("dot-center").getBoundingClientRect();
+        const areaRect = document.getElementById("area-svg").getBoundingClientRect();
+        const scale = areaRect.width / 3;
+
+        let r = areaDot.r;
+        let x = (clickEvent.pageX - centerRect.x) / scale * r;
+        let y = (centerRect.y - clickEvent.pageY) / scale * r;
+
+        x = math.roundTwoSigns(x);
+        y = math.roundTwoSigns(y);
+
+        const inputAreaDot = {
+            r: r,
+            x: x,
+            y: y
+        }
+
+        dispatch(setX(x));
+        dispatch(setY(y));
+
+        hitCheckService.checkHit(inputAreaDot);
+    }
+
+
     return (
-        <svg id="area-svg" width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+        <svg id="area-svg" width="300" height="300" xmlns="http://www.w3.org/2000/svg" onClick={areaOnClick}>
 
             <polygon points="150,200 150,150 50,150 50,200" className="area" />
             <polygon points="200,150 150,150 150,200" className="area" />
