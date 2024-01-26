@@ -5,36 +5,32 @@ const urls = {
     register: apiBase + "register"
 }
 
-const hitCheckService = {
-    checkHit: async (inputAreaDot) => {
-        let response = await fetch(apiBase, {
+const authService = {
+    login: async (userData) => {
+        let response = await fetch(urls.login, {
             method: "POST",
             body: JSON.stringify({
-                
+                login: userData.login,
+                password: userData.password
             }),
             headers: {
-              "Content-type": "application/json; charset=UTF-8"
+                "Content-type": "application/json; charset=UTF-8"
             }
         });
-        return await response.json();
+        return response;
     },
     
-    getAllHitChecks: async () => {
-        let response = await fetch(apiBase, {
-            method: "GET",
+    register: async (user) => {
+        console.log(user);
+        let response = await fetch(urls.register, {
+            method: "POST",
+            body: JSON.stringify({username: user.login, password: user.password}),
             headers: {
-                 "Content-Type": "application/json"
+                "Content-type": "application/json; charset=UTF-8"
             }
         });
-        return await response.json();
-    },
-    
-    deleteAllHitChecks: async () => {
-        let response = await fetch(apiBase, {
-            method: "DELETE"
-        });
-        return await response.json();
+        return response;
     }
 };
 
-export default hitCheckService;
+export default authService;
