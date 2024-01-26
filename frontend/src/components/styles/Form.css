@@ -1,0 +1,72 @@
+table {
+    padding-left: 5pt;
+    padding-right: 5pt;
+}
+
+.form-table td {
+    padding-top: 5pt;
+    padding-bottom: 5pt;
+}
+
+input {
+    background-color: #F8F8F8;
+    color: #282828;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: #282828;
+    border-style: solid;
+    cursor: pointer;
+    font-size: 16pt;
+}
+
+select {
+    background-color: #F8F8F8;
+    color: #282828;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: #282828;
+    border-style: solid;
+    cursor: pointer;
+    font-size: 16pt;
+    height: 36pt;
+    width: 165pt;       
+}
+
+.text-field {
+    height: 22pt;
+    width: 165pt;
+}
+
+.y-button {
+    height: 24pt;
+    width: 67pt;
+    margin-left: 4pt;
+    margin-right: 4pt;
+}
+
+.request-button {
+    height: 24pt;
+    width: 110pt;
+    margin-left: 8pt;
+    margin-right: 8pt;
+}
+
+
+input:hover {
+    background-color: #FFFFFF;
+}
+
+input:focus {
+    background-color: #EEEEEE;
+}
+
+input:active {
+    border-width: 2px;
+    border-color: #282828;
+}
+
+#err-msg {
+    height: 10px;
+    font-size: 18px;
+}
+

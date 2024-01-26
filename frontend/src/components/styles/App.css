@@ -1,0 +1,20 @@
+.container {
+    border-width: 0;
+    border-spacing: 10pt;
+}
+
+.block {
+    box-shadow: 0 0 12px rgba(128, 128, 128, 0.3);
+    background-color: #f8f8f8;
+    border-radius: 40px;
+}
+
+.left-block {
+    height: 350px;
+    width: 350px;
+}
+
+.right-block {
+    height: 350px;
+}
+
