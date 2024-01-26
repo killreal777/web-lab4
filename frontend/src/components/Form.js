@@ -10,8 +10,7 @@ import { setRadius } from "../store/radiusSlice";
 
 export default function Form() {
     const dispatch = useDispatch();
-
-    let radius = useSelector(state => state.radius.data);
+    const radius = useSelector((state) => state.radius.value);
 
     let inputAreaDot = {
         r: 1,
@@ -20,11 +19,9 @@ export default function Form() {
         isValid: false
     }
 
-    useEffect(() => {
-        dispatch(setRadius(inputAreaDot.r));
-    });
 
     function updateR (event) {
+        dispatch(setRadius(event.target.value));
         inputAreaDot.r = event.target.value;
     }
     
@@ -37,7 +34,6 @@ export default function Form() {
     }
     
     function send() {
-        console.log(radius);
         hitCheckService.checkHit(inputAreaDot);
     }
     
@@ -66,7 +62,7 @@ export default function Form() {
                             <tbody>
                                 <tr id="y-label-row">
                                     <td colSpan="9" className="y-label">
-                                        <label>Radius</label>
+                                        <label>Radius: </label><span>{radius}</span>
                                     </td>
                                 </tr>
                                 <tr>

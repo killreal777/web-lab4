@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const radiusSlice = createSlice({
     name: "radius",
     initialState: {
-        data: 1,
+        value: 1,
     },
     reducers: {
-        setRadius(state, action) {
-            state.data = action.payload.data;
+        setRadius: (state, action) => {
+            state.value = action.payload
         }
     },
 })
