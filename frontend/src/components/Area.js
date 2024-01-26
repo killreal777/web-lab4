@@ -3,33 +3,6 @@ import './styles/Area.css'
 import { useDispatch, useSelector } from "react-redux";
 
 
-
-
-function createDotHtml(cx, cy, isHit) {
-    const svg = document.getElementById("area-svg");
-    const svgNS = "http://www.w3.org/2000/svg";
-    const dot = document.createElementNS(svgNS, "circle");
-
-    setCreatedDotAttributes(dot, cx, cy, isHit);
-    svg.appendChild(dot);
-}
-
-function setCreatedDotAttributes(dot, cx, cy, isHit) {
-    const r = "2.5";
-    const styleClass = (isHit) ? "hit dot" : "fail dot";
-
-    dot.setAttributeNS(null,"cx", cx);
-    dot.setAttributeNS(null,"cy", cy);
-    dot.setAttributeNS(null,"r", r);
-    dot.setAttributeNS(null,"class", styleClass);
-}
-
-
-
-
-
-
-
 export default function Area() {
     const hitChecks = useSelector(state => state.hitChecks.data);
     const areaDot = useSelector((state) => state.areaDot.value);
