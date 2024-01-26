@@ -5,35 +5,30 @@ import { useEffect } from "react";
 
 import { setRadius } from "../store/radiusSlice";
 
+import { setR, setX, setY } from "../store/areaDotSlice";
+
 
 
 
 export default function Form() {
     const dispatch = useDispatch();
-    const radius = useSelector((state) => state.radius.value);
-
-    let inputAreaDot = {
-        r: radius,
-        x: null,
-        y: null,
-        isValid: false
-    }
-
+    const areaDot = useSelector((state) => state.areaDot.value);
 
     function updateR (event) {
-        dispatch(setRadius(event.target.value));
+        dispatch(setR(event.target.value));
+        console.log(areaDot.r)
     }
     
     function updateX (event) {
-        inputAreaDot.x = event.target.value;
+        dispatch(setX(event.target.value));
     }
     
     function updateY (event) {
-        inputAreaDot.y = event.target.value;
+        dispatch(setY(event.target.value));
     }
     
     function send() {
-        hitCheckService.checkHit(inputAreaDot);
+        hitCheckService.checkHit(areaDot);
     }
     
     function clean() {
@@ -47,12 +42,12 @@ export default function Form() {
                     <td>
                         <label htmlFor="x">Coordinate X</label><br/>
                         <input id="x" type="text" name="x" placeholder="(2 ... 5)" className="text-field" 
-                                onChange={updateX} value={inputAreaDot.x}/>
+                                onChange={updateX} value={areaDot.x}/>
                     </td>
                     <td>
                         <label htmlFor="y">Coordinate Y</label><br/>
                         <input id="y" type="text" name="y" placeholder="(-3 ... 5)" className="text-field" 
-                                onChange={updateY} value={inputAreaDot.y}/>
+                                onChange={updateY} value={areaDot.y}/>
                     </td>
                 </tr>
                 <tr>
@@ -61,7 +56,7 @@ export default function Form() {
                             <tbody>
                                 <tr id="y-label-row">
                                     <td colSpan="9" className="y-label">
-                                        <label>Radius: </label><span>{radius}</span>
+                                        <label>Radius: </label><span>{areaDot.r}</span>
                                     </td>
                                 </tr>
                                 <tr>

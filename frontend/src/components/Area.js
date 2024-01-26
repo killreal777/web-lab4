@@ -32,12 +32,12 @@ function setCreatedDotAttributes(dot, cx, cy, isHit) {
 
 export default function Area() {
     const hitChecks = useSelector(state => state.hitChecks.data);
-    const radius = useSelector((state) => state.radius.value);
+    const areaDot = useSelector((state) => state.areaDot.value);
 
 
     function getDotOffset(coordinateValue) {
         const radiusOffset = 100;
-        let dotOffset = coordinateValue / radius * radiusOffset;
+        let dotOffset = coordinateValue / areaDot.r * radiusOffset;
         return correctDotOffset(dotOffset);
     }
     
@@ -105,7 +105,7 @@ export default function Area() {
 
             {
                 hitChecks.map((element, index) =>
-                    <circle className={element.isHit ?  "hit dot" : "fail dot"}
+                    <circle className={element.hit ?  "hit dot" : "fail dot"}
                             cx={getCx(element.areaDot.x)} 
                             cy={getCy(element.areaDot.y)} 
                             r="2.5" />
