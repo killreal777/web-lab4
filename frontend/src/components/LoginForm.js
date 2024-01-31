@@ -36,10 +36,6 @@ export default function LoginForm() {
     
     const navigate = useNavigate();
 
-    function redirectToMain() {
-        navigate('/main', {replace: true});
-    }
-
 
     function register() {
         console.log(user);

@@ -82,7 +82,6 @@ export default function Form() {
                     <td colSpan="2">
                         <input id="submit" type="button" value="Send" className="request-button" onClick={send}/>
                         <input id="clear" type="button" value="Clean" className="request-button" onClick={clean}/>
-                        <input id="logout" type="button" value="Log out" className="request-button"/>
                     </td>
                 </tr>
             </tbody>
