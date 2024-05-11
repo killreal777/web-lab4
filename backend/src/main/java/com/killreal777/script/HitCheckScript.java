@@ -6,6 +6,11 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
+/**
+ * Class implementing main business logic.
+ * Represents script that validates input dot in accordance with technical specifications,
+ * checks if the dot hits the area, registers start time and execution time.
+ */
 @Component
 public class HitCheckScript {
     private final AreaDotValidator areaDotValidator;
