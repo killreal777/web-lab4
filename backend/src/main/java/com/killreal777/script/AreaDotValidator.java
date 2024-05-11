@@ -3,11 +3,11 @@ package com.killreal777.script;
 import com.killreal777.entity.AreaDot;
 
 class AreaDotValidator {
-    private final float X_MIN = -3;
-    private final float X_MAX = 5;
+    private static final float X_MIN = -3;
+    private static final float X_MAX = 5;
 
-    private final float Y_MIN = -4;
-    private final float Y_MAX = 4;
+    private static final float Y_MIN = -4;
+    private static final float Y_MAX = 4;
 
     protected void validate(AreaDot areaDot) {
         final float x = areaDot.getX();
