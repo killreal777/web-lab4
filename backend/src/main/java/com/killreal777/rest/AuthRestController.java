@@ -38,7 +38,7 @@ public class AuthRestController {
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody User user) {
         if (userService.isUsernameExists(user.getUsername())) {
-            return new ResponseEntity<>("Username is taken", HttpStatus.BAD_GATEWAY);
+            return new ResponseEntity<>("Username is taken", HttpStatus.UNAUTHORIZED);
         } else {
             encodePassword(user);
             userService.addUser(user);
